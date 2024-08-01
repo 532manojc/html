@@ -1,0 +1,291 @@
+2.
+#include<stdio.h>
+int check(int day,int month)
+{
+if((month==4||month==6||month==9 ||month==11) && day==31) return 1;
+else
+}
+
+return 0;
+int isleap(int year)
+{
+if((year%4==0 && year%100!=0) || year%400==0) return 1;
+else
+return 0;
+
+}
+int main()
+{
+int day,month,year,tomm_day,tomm_month,tomm_year; char flag;
+do
+{
+flag='y';
+printf("\n enter the today's date in the form of dd mm yyyy\n"); 
+scanf("%d%d%d",&day,&month,&year); tomm_month=month;
+tomm_year= year; if(day<1 || day>31)
+{
+printf("value of day, not in the range 1...31\n"); flag='n';
+}
+if(month<1 || month>12)
+{
+printf("value of month, not in the range 1.	12\n");
+flag='n';
+}
+else if(check(day,month))
+{
+printf("value of day, not in the range day<=30"); flag='n';
+}
+
+if(year<=1812 || year>2013)
+{
+
+
+printf("value of year, not in the range 1812.	2013\n");
+flag='n';
+}
+if(month==2)
+{
+if(isleap(year) && day>29)
+{
+printf("invalid date input for leap year"); flag='n';
+}
+else if(!(isleap(year))&& day>28)
+{
+printf("invalid date input for not a leap year"); flag='n';
+}
+}
+}while(flag=='n');
+
+switch (month)
+{
+case 1:
+case 3:
+case 5:
+case 7:
+case 8:
+case 10:if(day<31)
+tomm_day=day+1;
+ 
+
+
+
+
+
+
+case 4:
+case 6:
+case 9:
+ 
+else
+{
+
+
+}
+break;
+ 
+
+
+tomm_day=1; tomm_month=month+1;
+ 
+case 11: if(day<30)
+tomm_day=day+1;
+ 
+else
+{
+
+
+}
+break;
+ 
+tomm_day=1; tomm_month=month+1;
+ 
+
+case 12: if(day<31)
+tomm_day=day+1;
+else
+{
+tomm_day=1;
+tomm_month=1;
+
+
+if(year==2013)
+{
+printf("the next day is out of boundary value of year\n"); tomm_year=year+1;
+ 
+case 2:
+
+}
+break;
+ 
+}
+else
+tomm_year=year+1;
+ 
+if(day<28)
+tomm_day=day+1;
+else if(isleap(year)&& day==28)
+tomm_day=day+1; else if(day==28 || day==29)
+{
+ 
+break;
+}
+ 
+tomm_day=1; tomm_month=3;
+}
+ 
+printf("next day is : %d %d %d",tomm_day,tomm_month,tomm_year); return 0;}
+
+
+
+3.
+#include<stdio.h> int main()
+{
+int locks, stocks, barrels, tlocks, tstocks, tbarrels; float lprice, sprice, bprice, sales, comm;
+int c1,c2,c3,temp; lprice=45.0; sprice=30.0; bprice=25.0; tlocks=0; tstocks=0; tbarrels=0;
+printf("\nenter the number of locks and to exit the loop enter -1 for locks\n"); scanf("%d",&locks);
+while(locks!=-1)
+{
+c1=(locks<=0||locks>70);
+printf("enter the number of stocks and barrels\n"); scanf("%d%d",&stocks,&barrels); c2=(stocks<=0||stocks>80); c3=(barrels<=0||barrels>90);
+if(c1)
+ 
+
+else
+{
+ 
+printf("value of locks not in the range 1..70 ");
+
+
+temp=tlocks+locks; if(temp>70)
+printf("new total locks =%d not in the range 1..70 so old ",temp);
+ 
+else
+
+}
+ 
+
+tlocks=temp;
+ 
+printf("total locks = %d\n",tlocks);
+
+ 
+if(c2)
+
+else
+{
+ 
+
+printf("value of stocks not in the range 1..80 ");
+ 
+
+temp=tstocks+stocks; if(temp>80)
+printf("new total stocks =%d not in the range 1..80 so old ",temp); else
+
+tstocks=temp;
+}
+printf("total stocks=%d\n",tstocks);
+
+ 
+if(c3)
+
+else
+{
+
+
+
+
+
+}
+ 
+
+printf("value of barrels not in the range 1..90 ");
+
+
+temp=tbarrels+barrels; if(temp>90)
+printf("new total barrels =%d not in the range 1..90 so old ",temp); else
+tbarrels=temp;
+ 
+printf("total barrel=%d",tbarrels);
+printf("\nenter the number of locks and to exit the loop enter -1 for locks\n"); scanf("%d",&locks);
+}
+printf("\ntotal locks = %d\ntotal stocks =%d\ntotal barrels =%d\n",tlocks,tstocks,tbarrels); sales = lprice*tlocks+sprice*tstocks+bprice*tbarrels;
+printf("\nthe total sales=%f\n",sales);
+
+if(tlocks>0&&tstocks>0&&tbarrels>0)
+{
+if(sales > 1800.0)
+{
+comm=0.10*1000.0;
+comm=comm+0.15*800; comm=comm+0.20*(sales-1800.0);
+}
+else if(sales > 1000)
+{
+ 
+
+}
+else
+ 
+comm =0.10*1000; comm=comm+0.15*(sales-1000);
+
+
+comm=0.10*sales;
+ 
+
+ 
+
+}
+else
+ 
+printf("the commission is=%f\n",comm);
+
+
+printf(" Commission cannot be calculated \n");
+ 
+return 0;
+}
+
+
+6.
+#include<stdio.h>
+int binsrc(int x[],int low,int high,int key)
+{
+int mid; while(low<=high)
+{
+mid=(low+high)/2; if(key==x[mid])
+return mid; if(key<x[mid])
+high=mid-1;
+ 
+else
+
+}
+ 
+low=mid+1;
+ 
+return -1;
+}
+
+int main()
+{
+int x[20],key,i,n,succ; printf("Enter the n value"); scanf("%d",&n);
+if(n>0)
+{
+printf("enter the elements in ascending order\n"); for(i=0;i<n;i++)
+scanf("%d",&x[i]);
+
+printf("enter the key element to be searched\n"); scanf("%d",&key);
+succ=binsrc(x,0,n-1,key); if(succ>=0)
+printf("Element found in position = %d\n",succ+1);
+ 
+
+
+}
+else
+ 
+else
+ 
+
+printf("Element not found \n");
+ 
+printf("Number of element should be greater than zero\n"); return 0;
+}
+
